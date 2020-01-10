@@ -1,0 +1,57 @@
+body{
+  background-color: coral;
+}
+
+
+
+.result {
+
+  height: 60px;
+
+  background-color: black;
+  color: aliceblue;
+  width: 100%;
+
+}
+
+
+
+.result p {
+
+  font-size: 40px;
+
+  margin: 5px
+
+}
+
+
+
+.calculator-body {
+
+  max-width: 400px;
+
+  margin: auto;
+
+}
+
+
+
+.button {
+
+  display: block;
+
+  background-color: purple;
+
+}
+
+
+
+button {
+
+  width: 25%;
+
+  height: 60px;
+  background-color: purple;
+  font-size: 30px;
+
+}
