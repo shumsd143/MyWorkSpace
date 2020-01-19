@@ -1,0 +1,19 @@
+.imgurl{
+    width: 50%;
+    height:30px;
+    border: 2px solid rgb(21, 255, 0);
+    border-radius: 8px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+.buttoncss{
+    margin-top: 1%;
+    width:20%;
+    height: 30px;
+    border: 2px solid blue;
+    background-color: blue;
+    margin-left: 40%;
+    margin-right: 40%;
+    border-radius: 8px;
+}
