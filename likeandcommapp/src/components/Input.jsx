@@ -23,7 +23,7 @@ class Input extends Component {
         var data={
             imgurl:this.state.url
         }
-        axios.post('http://127.0.0.1:2222/addurl/',data)
+        axios.post('https://imagershu.herokuapp.com/addurl/',data)
             .then(response=>{
                 console.log(response)
             })
@@ -44,4 +44,3 @@ class Input extends Component {
 }
 
 export default Input
-

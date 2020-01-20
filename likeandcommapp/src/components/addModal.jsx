@@ -26,7 +26,7 @@ class AddModal extends Component {
         var data={
             comment:this.state.comment
         }
-        axios.post('http://127.0.0.1:2222/add/',data)
+        axios.post('https://imagershu.herokuapp.com/add/',data)
             .then(response=>{
                 console.log(response)
             })

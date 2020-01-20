@@ -14,7 +14,7 @@ class App extends Component{
   }
 
   fetcher=()=>{
-    fetch('http://127.0.0.1:2222/geturl/')
+    fetch('https://imagershu.herokuapp.com/geturl/')
     .then(res=>res.json())
     .then(json=>{
       this.setState({

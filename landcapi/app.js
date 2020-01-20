@@ -1,8 +1,8 @@
 const express = require('express')
 const mongodb = require('mongodb')
 const app = express()
-const HOSTNAME = '127.0.0.1'
-const PORT = 2222
+const HOSTNAME =process.env.HOSTNAME || '127.0.0.1'
+const PORT = process.env.PORT || 2222
 const DB_URI ='mongodb+srv://todos:shubham@cluster0-vh32b.mongodb.net/test?retryWrites=true&w=majority'
 const cors=require('cors')
 
@@ -67,7 +67,7 @@ mongodb.MongoClient.connect(DB_URI, (error, dbClient) => {
             res.send(obj)
         })
     })
-    app.listen(PORT, HOSTNAME, () => {
+    app.listen(PORT, () => {
     console.log(`The server is running at http://${HOSTNAME}:${PORT}/`)
     })
 })

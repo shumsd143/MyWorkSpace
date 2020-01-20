@@ -12,7 +12,7 @@ class ModalBody extends Component{
     }
   
     fetcher=()=>{
-      fetch('http://127.0.0.1:2222/get/')
+      fetch('https://imagershu.herokuapp.com/get/')
       .then(res=>res.json())
       .then(json=>{
         this.setState({
