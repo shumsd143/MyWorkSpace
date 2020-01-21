@@ -7,15 +7,16 @@ class Para extends Component {
     constructor(props){
         super(props);
         this.state={
-            items:this.props.datatobe
+            items:this.props.datatobe,
+            type:Array.isArray(this.props.datatobe)
         }
-        console.log(this.state.items)
+        console.log(Array.isArray(this.state.items))
     }
 
 
     render(){
-        var {items} =this.state
-        if(!this.props.datatobe){
+        var {items,type} =this.state
+        if(!type){
             return (
                 <Alert variant="danger" className="paraone">
                     <Alert.Heading>Oh! Something Went Wrong!</Alert.Heading>
