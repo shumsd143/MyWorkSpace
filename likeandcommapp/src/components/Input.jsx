@@ -25,6 +25,9 @@ class Input extends Component {
         }
         axios.post('https://imagershu.herokuapp.com/addurl/',data)
             .then(response=>{
+                this.setState({
+                    url:''
+                })
                 console.log(response)
             })
             .catch(response=>{
