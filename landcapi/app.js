@@ -5,7 +5,7 @@ const HOSTNAME =process.env.HOSTNAME || '127.0.0.1'
 const PORT = process.env.PORT || 2222
 const DB_URI ='mongodb+srv://todos:shubham@cluster0-vh32b.mongodb.net/test?retryWrites=true&w=majority'
 const cors=require('cors')
-
+const ObjectID = require('mongodb').ObjectID
 
 app.use(express.json())
 app.use(cors())
@@ -19,9 +19,11 @@ mongodb.MongoClient.connect(DB_URI, (error, dbClient) => {
     }
     console.log('successfully connected to the dbClient.')
     const database = dbClient.db('imager')
-    app.get('/get/',(req,res)=>{
+    app.get('/get/:id?',(req,res)=>{
         const collection=database.collection('imager')
-        collection.find({}).toArray().then(data => {
+        id1=req.params.id
+        console.log(id1)
+        collection.find({'imgname':id1.toString()}).toArray().then(data => {
           // console.log(data)
           res.send({
               message: 'success',
@@ -43,15 +45,27 @@ mongodb.MongoClient.connect(DB_URI, (error, dbClient) => {
             res.send(obj)
         })
     })
-    app.get('/geturl/',(req,res)=>{
+    app.get('/geturl/:imgid?',(req,res)=>{
         const collection=database.collection('imgurl')
-        collection.find({}).toArray().then(data => {
-          // console.log(data)
-          res.send({
-              message: 'success',
-              data: data
-          })
-        })
+        img1=req.params.imgid
+        if(img1){
+            collection.find({'_id':new ObjectID(img1)}).toArray().then(data => {
+                // console.log(data)
+                res.send({
+                    message: 'success',
+                    data: data
+                })
+            })
+        }
+        else{
+            collection.find({}).toArray().then(data => {
+            // console.log(data)
+            res.send({
+                message: 'success',
+                data: data
+            })
+            })
+        }
     })
     app.post('/addurl/',(req,res)=>{
         console.log(req.body)
@@ -66,6 +80,20 @@ mongodb.MongoClient.connect(DB_URI, (error, dbClient) => {
             }
             res.send(obj)
         })
+    })
+    app.put('/changelike/:imgid?',(req,res)=>{
+        const collection=database.collection('imgurl')
+        img1=req.params.imgid
+        inc=req.body.like
+        if(img1){
+            collection.findOneAndUpdate({'_id':new ObjectID(img1)},{$set:{'lbut':inc}}).then(data => {
+                // console.log(data)
+                res.send({
+                    message: 'success',
+                    data: data
+                })
+            })
+        }
     })
     app.listen(PORT, () => {
     console.log(`The server is running at http://${HOSTNAME}:${PORT}/`)

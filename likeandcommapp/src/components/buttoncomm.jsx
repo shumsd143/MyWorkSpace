@@ -10,7 +10,7 @@ class Buttoncomm extends Component {
     render(){
         return (
             <span className="bgn">
-                <AddModal/>
+                <AddModal idc={this.props.id}/>
             </span>
         )
     }

@@ -17,9 +17,10 @@ class App extends Component{
     fetch('https://imagershu.herokuapp.com/geturl/')
     .then(res=>res.json())
     .then(json=>{
+      var arr=json.data
       this.setState({
         load:true,
-        items:json.data,
+        items:arr
       })
     })
   }
@@ -53,7 +54,7 @@ class App extends Component{
           <Input/>
           <div className="head" id="high">
             {items.map(data=>
-              <Imagenew url={data.imgurl} />
+              <Imagenew url={data.imgurl} liker={data.lbut} id={data._id}/>
             )}
           </div>
         </div>

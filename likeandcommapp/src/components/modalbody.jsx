@@ -8,24 +8,27 @@ class ModalBody extends Component{
         this.state={
           items:[],
           load:false,
+          id:this.props.ids
         }
     }
   
-    fetcher=()=>{
-      fetch('https://imagershu.herokuapp.com/get/')
+    fetcher=(id1)=>{
+      fetch('https://imagershu.herokuapp.com/get/'+id1)
       .then(res=>res.json())
       .then(json=>{
         this.setState({
           load:true,
           items:json.data,
+          id:this.state.id
         })
+        //console.log(this.state.id)
       })
     }
   
   
     componentDidMount(){
-      this.fetcher();
-      this.interval=setInterval(()=>{this.fetcher()},2000)
+      this.fetcher(this.state.id);
+      this.interval=setInterval(()=>{this.fetcher(this.state.id)},2000)
     }
   
     componentWillUnmount() {
@@ -48,7 +51,7 @@ class ModalBody extends Component{
         return (
             <div className="Modaler">
                 {items.map(data=>
-                <p><span className="namer">Unknown</span>   -  {data.comment}</p>
+                  <p><span className="namer">Unknown</span>   -  {data.comment}</p>
                 )}
             </div>
         )

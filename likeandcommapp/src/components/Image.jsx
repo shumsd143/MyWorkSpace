@@ -9,8 +9,8 @@ const Image = (props)=>{
         <div className="image">
             <img className="bgm" src={props.url} alt="Wrong Image Url" />
             <div>
-                <Button/>
-                <Buttoncomm className="comments"/>
+                <Button number={props.liker} id={props.id}/>
+                <Buttoncomm className="comments" id={props.id}/>
             </div>
         </div>
     )
